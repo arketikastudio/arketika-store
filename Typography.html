@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Arketika — Typography</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Outfit', sans-serif;
+    background: #F0EDE8;
+    padding: 48px 40px;
+    -webkit-font-smoothing: antialiased;
+  }
+  h1.label { font-size: 11px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: #8B7355; margin-bottom: 6px; }
+  h2.title { font-size: 28px; font-weight: 700; color: #1A1A1A; margin-bottom: 40px; letter-spacing: -0.02em; }
+
+  .row {
+    display: grid;
+    grid-template-columns: 180px 1fr;
+    align-items: baseline;
+    gap: 24px;
+    padding: 24px 0;
+    border-bottom: 1px solid #DEDAD5;
+  }
+  .row:first-of-type { border-top: 1px solid #DEDAD5; }
+  .meta { padding-top: 4px; }
+  .meta-role { font-size: 12px; font-weight: 600; color: #8B7355; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 4px; }
+  .meta-spec { font-size: 11px; color: #595959; line-height: 1.6; }
+
+  .sample-hero {
+    font-size: 60px; font-weight: 700; letter-spacing: -0.02em;
+    color: #1A1A1A; line-height: 1.1; text-wrap: balance;
+  }
+  .sample-h2 {
+    font-size: 36px; font-weight: 600; letter-spacing: -0.01em;
+    color: #1A1A1A; line-height: 1.25; text-wrap: balance;
+  }
+  .sample-h3 {
+    font-size: 24px; font-weight: 600;
+    color: #1A1A1A; line-height: 1.375;
+  }
+  .sample-card-title {
+    font-size: 22px; font-weight: 600;
+    color: #1A1A1A; line-height: 1.375; text-wrap: balance;
+  }
+  .sample-lead {
+    font-size: 18px; font-weight: 400;
+    color: #595959; line-height: 1.625;
+  }
+  .sample-body {
+    font-size: 16px; font-weight: 400;
+    color: #595959; line-height: 1.625; max-width: 560px;
+  }
+  .sample-body-sm {
+    font-size: 14px; font-weight: 400;
+    color: #595959; line-height: 1.6;
+  }
+  .sample-label {
+    font-size: 12px; font-weight: 600;
+    color: #8B7355; text-transform: uppercase; letter-spacing: 0.08em;
+  }
+  .sample-badge {
+    font-size: 11px; font-weight: 500;
+    color: #595959; text-transform: uppercase; letter-spacing: 0.10em;
+  }
+  .sample-logo {
+    font-size: 24px; font-weight: 700; letter-spacing: -0.02em;
+    color: #1A1A1A;
+  }
+
+  .weight-row {
+    display: flex; gap: 40px; flex-wrap: wrap;
+    padding: 32px 0; border-bottom: 1px solid #DEDAD5;
+  }
+  .weight-item { }
+  .weight-sample { font-size: 32px; color: #1A1A1A; line-height: 1; margin-bottom: 6px; }
+  .weight-label { font-size: 11px; color: #595959; }
+</style>
+</head>
+<body>
+  <h1 class="label">Arketika Design System</h1>
+  <h2 class="title">Typography</h2>
+
+  <div class="weight-row">
+    <div class="weight-item">
+      <div class="weight-sample" style="font-weight:300">Aa</div>
+      <div class="weight-label">300 Light</div>
+    </div>
+    <div class="weight-item">
+      <div class="weight-sample" style="font-weight:400">Aa</div>
+      <div class="weight-label">400 Regular</div>
+    </div>
+    <div class="weight-item">
+      <div class="weight-sample" style="font-weight:500">Aa</div>
+      <div class="weight-label">500 Medium</div>
+    </div>
+    <div class="weight-item">
+      <div class="weight-sample" style="font-weight:600">Aa</div>
+      <div class="weight-label">600 SemiBold</div>
+    </div>
+    <div class="weight-item">
+      <div class="weight-sample" style="font-weight:700">Aa</div>
+      <div class="weight-label">700 Bold</div>
+    </div>
+    <div class="weight-item">
+      <div class="weight-sample" style="font-weight:800">Aa</div>
+      <div class="weight-label">800 ExtraBold</div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="meta">
+      <div class="meta-role">Hero / Display</div>
+      <div class="meta-spec">60px · 700 · −0.02em<br>line-height 1.1<br>text-wrap: balance</div>
+    </div>
+    <div class="sample-hero">Arquitectura que se vuelve hogar</div>
+  </div>
+
+  <div class="row">
+    <div class="meta">
+      <div class="meta-role">Heading 2</div>
+      <div class="meta-spec">36px · 600 · −0.01em<br>line-height 1.25</div>
+    </div>
+    <div class="sample-h2">Colección Lumina</div>
+  </div>
+
+  <div class="row">
+    <div class="meta">
+      <div class="meta-role">Heading 3</div>
+      <div class="meta-spec">24px · 600<br>line-height 1.375</div>
+    </div>
+    <div class="sample-h3">Fabricación artesanal</div>
+  </div>
+
+  <div class="row">
+    <div class="meta">
+      <div class="meta-role">Card Title</div>
+      <div class="meta-spec">22px · 600<br>line-height 1.375<br>text-wrap: balance</div>
+    </div>
+    <div class="sample-card-title">Escritorio en L con iluminación integrada</div>
+  </div>
+
+  <div class="row">
+    <div class="meta">
+      <div class="meta-role">Lead / Large body</div>
+      <div class="meta-spec">18px · 400<br>line-height 1.625<br>color: muted-fg</div>
+    </div>
+    <div class="sample-lead">Descubre muebles de diseño Japandi fabricados artesanalmente. Cada pieza combina la calidez del roble natural con la fortaleza del hierro negro.</div>
+  </div>
+
+  <div class="row">
+    <div class="meta">
+      <div class="meta-role">Body</div>
+      <div class="meta-spec">16px · 400<br>line-height 1.625<br>color: muted-fg</div>
+    </div>
+    <div class="sample-body">Trabajamos con materiales nobles y técnicas tradicionales para garantizar una calidad excepcional en cada pieza. Muebles diseñados para durar generaciones, con acabados resistentes y materiales de primera calidad.</div>
+  </div>
+
+  <div class="row">
+    <div class="meta">
+      <div class="meta-role">Body Small</div>
+      <div class="meta-spec">14px · 400<br>line-height 1.6<br>color: muted-fg</div>
+    </div>
+    <div class="sample-body-sm">© 2025 Arketika. Todos los derechos reservados. Diseño y fabricación artesanal en Colombia.</div>
+  </div>
+
+  <div class="row">
+    <div class="meta">
+      <div class="meta-role">Section Label</div>
+      <div class="meta-spec">12px · 600 · 0.08em<br>UPPERCASE<br>color: primary</div>
+    </div>
+    <div class="sample-label">Características destacadas</div>
+  </div>
+
+  <div class="row">
+    <div class="meta">
+      <div class="meta-role">Badge / Tag</div>
+      <div class="meta-spec">11px · 500 · 0.10em<br>UPPERCASE<br>color: muted-fg</div>
+    </div>
+    <div class="sample-badge">Material principal · Estructura · Iluminación</div>
+  </div>
+
+  <div class="row">
+    <div class="meta">
+      <div class="meta-role">Logo / Wordmark</div>
+      <div class="meta-spec">24px · 700 · −0.02em<br>color: foreground</div>
+    </div>
+    <div class="sample-logo">Arketika</div>
+  </div>
+</body>
+</html>

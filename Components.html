@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Arketika — Components</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Outfit', sans-serif;
+    background: #F0EDE8;
+    padding: 48px 40px 80px;
+    -webkit-font-smoothing: antialiased;
+    color: #1A1A1A;
+  }
+  h1.ds-label { font-size: 11px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: #8B7355; margin-bottom: 6px; }
+  h2.ds-title { font-size: 28px; font-weight: 700; color: #1A1A1A; margin-bottom: 40px; letter-spacing: -0.02em; }
+  .section { margin-bottom: 56px; }
+  .section-label { font-size: 10px; font-weight: 600; letter-spacing: 0.10em; text-transform: uppercase; color: #8B7355; margin-bottom: 20px; padding-bottom: 10px; border-bottom: 1px solid #DEDAD5; }
+  .row { display: flex; flex-wrap: wrap; gap: 12px; align-items: flex-start; }
+  .col2 { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+  .col3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 24px; }
+
+  /* ── BUTTONS ─────────────────────────────────────────────── */
+  .btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-family: 'Outfit', sans-serif; font-size: 14px; font-weight: 500;
+    padding: 10px 20px; border-radius: 12px; border: none; cursor: pointer;
+    transition: all 200ms ease-in-out; text-decoration: none; white-space: nowrap;
+    -webkit-font-smoothing: antialiased;
+  }
+  .btn-primary { background: #8B7355; color: #F9F7F4; }
+  .btn-primary:hover { background: #7A6549; }
+  .btn-outline { background: transparent; color: #1A1A1A; border: 1.5px solid #DEDAD5; }
+  .btn-outline:hover { background: #E8E6E3; }
+  .btn-ghost { background: transparent; color: #595959; }
+  .btn-ghost:hover { background: rgba(232,230,227,0.6); color: #1A1A1A; }
+  .btn-whatsapp { background: #25D366; color: #fff; }
+  .btn-whatsapp:hover { background: #20BA5A; }
+  .btn-dark { background: #1A1A1A; color: #FFF8DC; }
+  .btn-dark:hover { background: #2a2a2a; }
+  .btn-lg { font-size: 16px; padding: 14px 28px; }
+  .btn-sm { font-size: 12px; padding: 6px 14px; border-radius: 8px; }
+  .btn-icon-only { padding: 10px; border-radius: 10px; background: transparent; border: 1.5px solid #DEDAD5; }
+
+  /* ── BADGE / SPECIFICATION ───────────────────────────────── */
+  .badge {
+    display: inline-flex; align-items: center;
+    font-size: 12px; font-weight: 400; padding: 4px 10px;
+    border-radius: 8px; border: 1px solid #DEDAD5;
+    background: rgba(232,230,227,0.5); color: #1A1A1A;
+  }
+  .badge-primary { background: rgba(139,115,85,0.12); border-color: rgba(139,115,85,0.25); color: #8B7355; }
+
+  .spec-badge { display: flex; flex-direction: column; gap: 4px; }
+  .spec-label { font-size: 10px; font-weight: 600; color: #595959; text-transform: uppercase; letter-spacing: 0.08em; }
+
+  /* ── HEADER ──────────────────────────────────────────────── */
+  .header-demo {
+    background: rgba(249,247,244,0.95);
+    border: 1px solid rgba(222,218,213,0.4);
+    border-radius: 12px;
+    padding: 0 24px;
+    backdrop-filter: blur(8px);
+  }
+  .header-inner {
+    display: flex; align-items: center; justify-content: space-between;
+    height: 64px;
+  }
+  .header-logo { font-size: 22px; font-weight: 700; letter-spacing: -0.02em; color: #1A1A1A; }
+  .header-nav { display: flex; gap: 28px; }
+  .nav-link { font-size: 13px; font-weight: 500; color: #595959; text-decoration: none; }
+  .nav-link.active { color: #8B7355; position: relative; }
+  .nav-link.active::after {
+    content: ''; position: absolute; bottom: -22px; left: 0; right: 0;
+    height: 2px; background: #8B7355; border-radius: 1px;
+  }
+
+  /* ── PRODUCT CARD ────────────────────────────────────────── */
+  .product-card {
+    background: #fff; border: 1px solid rgba(222,218,213,0.5);
+    border-radius: 12px; overflow: hidden;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+    transition: box-shadow 300ms ease-in-out;
+    display: flex; flex-direction: column;
+  }
+  .product-card:hover { box-shadow: 0 10px 15px -3px rgba(139,115,85,0.10), 0 4px 6px -2px rgba(139,115,85,0.05); }
+  .product-image {
+    width: 100%; height: 200px; background: #E8E6E3;
+    overflow: hidden; position: relative;
+  }
+  .product-image img { width: 100%; height: 100%; object-fit: cover; transition: transform 500ms ease-in-out; }
+  .product-card:hover .product-image img { transform: scale(1.05); }
+  .product-img-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.2), transparent);
+    opacity: 0; transition: opacity 300ms ease-in-out;
+  }
+  .product-card:hover .product-img-overlay { opacity: 1; }
+  .product-body { padding: 20px; flex: 1; display: flex; flex-direction: column; gap: 12px; }
+  .product-category { font-size: 10px; font-weight: 600; color: #8B7355; text-transform: uppercase; letter-spacing: 0.08em; }
+  .product-name { font-size: 18px; font-weight: 600; line-height: 1.375; text-wrap: balance; }
+  .product-desc { font-size: 13px; color: #595959; line-height: 1.6; }
+  .product-specs { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 4px; }
+  .product-footer { padding: 0 20px 20px; }
+
+  /* ── FEATURE ICON ────────────────────────────────────────── */
+  .feature-block { text-align: center; }
+  .feature-icon {
+    width: 64px; height: 64px; border-radius: 12px;
+    background: rgba(139,115,85,0.10); color: #8B7355;
+    display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 16px;
+  }
+  .feature-title { font-size: 16px; font-weight: 600; margin-bottom: 8px; }
+  .feature-body { font-size: 13px; color: #595959; line-height: 1.6; }
+
+  /* ── INPUT ───────────────────────────────────────────────── */
+  .input-group { display: flex; flex-direction: column; gap: 6px; }
+  .input-label { font-size: 12px; font-weight: 600; color: #1A1A1A; }
+  .input {
+    font-family: 'Outfit', sans-serif; font-size: 14px;
+    padding: 10px 14px; border: 1.5px solid #DEDAD5;
+    border-radius: 10px; background: #fff; color: #1A1A1A;
+    outline: none; transition: border-color 200ms;
+    width: 100%;
+  }
+  .input:focus { border-color: #8B7355; box-shadow: 0 0 0 3px rgba(139,115,85,0.12); }
+  .input-hint { font-size: 11px; color: #595959; }
+
+  /* ── WHATSAPP FAB ────────────────────────────────────────── */
+  .fab {
+    width: 56px; height: 56px; border-radius: 9999px;
+    background: #25D366; color: #fff; border: none; cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 4px 12px rgba(37,211,102,0.35);
+    transition: all 300ms ease-in-out;
+  }
+  .fab:hover { transform: scale(1.10); box-shadow: 0 6px 20px rgba(37,211,102,0.45); }
+
+  /* ── FOOTER ──────────────────────────────────────────────── */
+  .footer-demo {
+    background: rgba(232,230,227,0.30); border: 1px solid rgba(222,218,213,0.4);
+    border-radius: 12px; padding: 32px;
+  }
+  .footer-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 24px; }
+  .footer-logo { font-size: 20px; font-weight: 700; letter-spacing: -0.02em; }
+  .footer-tagline { font-size: 12px; color: #595959; margin-top: 8px; line-height: 1.6; }
+  .footer-col-label { font-size: 10px; font-weight: 600; color: #1A1A1A; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 12px; }
+  .footer-item { display: flex; align-items: flex-start; gap: 8px; margin-bottom: 8px; font-size: 12px; color: #595959; }
+  .footer-item svg { color: #8B7355; flex-shrink: 0; margin-top: 1px; }
+  .footer-divider { border: none; border-top: 1px solid #DEDAD5; margin: 24px 0 16px; }
+  .footer-bottom { display: flex; justify-content: space-between; font-size: 11px; color: #595959; }
+
+  /* ── CTA DARK SECTION ────────────────────────────────────── */
+  .cta-demo {
+    background: #1A1A1A; border-radius: 12px;
+    padding: 48px 40px; text-align: center;
+  }
+  .cta-h2 { font-size: 28px; font-weight: 600; color: #F9F7F4; margin-bottom: 16px; text-wrap: balance; }
+  .cta-p { font-size: 15px; color: rgba(249,247,244,0.75); max-width: 440px; margin: 0 auto 28px; line-height: 1.6; }
+
+  /* ── HERO OVERLAY ────────────────────────────────────────── */
+  .hero-demo {
+    border-radius: 12px; overflow: hidden; position: relative;
+    height: 220px;
+    background: #2a2420;
+  }
+  .hero-img {
+    position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
+    opacity: 0.55;
+  }
+  .hero-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.5), rgba(0,0,0,0.4), rgba(0,0,0,0.6));
+  }
+  .hero-content {
+    position: relative; z-index: 2;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    height: 100%; padding: 24px; text-align: center;
+  }
+  .hero-h1 { font-size: 28px; font-weight: 700; color: #fff; letter-spacing: -0.02em; text-wrap: balance; margin-bottom: 12px; }
+  .hero-sub { font-size: 14px; color: rgba(255,255,255,0.88); line-height: 1.6; margin-bottom: 20px; }
+  .hero-btns { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
+  .btn-hero-primary { background: #8B7355; color: #F9F7F4; font-size: 13px; padding: 10px 20px; border-radius: 10px; font-family: 'Outfit', sans-serif; font-weight: 500; border: none; cursor: pointer; }
+  .btn-hero-outline {
+    background: rgba(255,255,255,0.10); backdrop-filter: blur(4px);
+    border: 1px solid rgba(255,255,255,0.20); color: #fff;
+    font-size: 13px; padding: 10px 20px; border-radius: 10px;
+    font-family: 'Outfit', sans-serif; font-weight: 500; cursor: pointer;
+  }
+
+  /* ── SCROLL INDICATOR ────────────────────────────────────── */
+  .scroll-indicator {
+    width: 24px; height: 40px; border: 2px solid rgba(255,255,255,0.30);
+    border-radius: 999px; display: flex; align-items: flex-start; justify-content: center;
+    padding: 6px;
+  }
+  .scroll-dot { width: 4px; height: 8px; background: rgba(255,255,255,0.5); border-radius: 999px; animation: scroll-bounce 2s infinite; }
+  @keyframes scroll-bounce { 0%,100% { transform: translateY(0); } 50% { transform: translateY(8px); } }
+
+  svg { display: block; }
+</style>
+</head>
+<body>
+  <h1 class="ds-label">Arketika Design System</h1>
+  <h2 class="ds-title">Components</h2>
+
+  <!-- BUTTONS -->
+  <div class="section">
+    <div class="section-label">Buttons</div>
+    <div class="row" style="margin-bottom:16px;">
+      <button class="btn btn-primary btn-lg">
+        <span>Explorar catálogo</span>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </button>
+      <button class="btn btn-outline btn-lg">Pedido personalizado</button>
+      <button class="btn btn-whatsapp btn-lg">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+        Iniciar conversación
+      </button>
+    </div>
+    <div class="row" style="margin-bottom:16px;">
+      <button class="btn btn-primary">Cotizar esta pieza</button>
+      <button class="btn btn-outline">
+        Ver catálogo completo
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </button>
+      <button class="btn btn-ghost">Ver más</button>
+      <button class="btn btn-dark">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+        Iniciar conversación
+      </button>
+    </div>
+    <div class="row">
+      <button class="btn btn-primary btn-sm">Cotizar</button>
+      <button class="btn btn-outline btn-sm">Ver detalles</button>
+      <button class="btn btn-icon-only" title="Menu">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#595959" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
+      <div class="fab" style="position:relative;width:48px;height:48px;font-size:0;">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+      </div>
+    </div>
+  </div>
+
+  <!-- BADGES -->
+  <div class="section">
+    <div class="section-label">Badges & Specification Badges</div>
+    <div class="row" style="margin-bottom: 20px;">
+      <span class="badge">Escritorios</span>
+      <span class="badge">Almacenamiento</span>
+      <span class="badge">Asientos</span>
+      <span class="badge badge-primary">Artesanal</span>
+      <span class="badge badge-primary">Roble natural</span>
+      <span class="badge badge-primary">Hierro negro</span>
+    </div>
+    <div class="row">
+      <div class="spec-badge">
+        <span class="spec-label">Material principal</span>
+        <span class="badge">Roble natural macizo</span>
+      </div>
+      <div class="spec-badge">
+        <span class="spec-label">Estructura</span>
+        <span class="badge">Hierro negro mate</span>
+      </div>
+      <div class="spec-badge">
+        <span class="spec-label">Iluminación</span>
+        <span class="badge">LED 3000K integrado</span>
+      </div>
+      <div class="spec-badge">
+        <span class="spec-label">Dimensiones</span>
+        <span class="badge">200cm × 160cm × 75cm</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- HEADER -->
+  <div class="section">
+    <div class="section-label">Header (sticky, glassmorphism lite)</div>
+    <div class="header-demo">
+      <div class="header-inner">
+        <div class="header-logo">Arketika</div>
+        <nav class="header-nav">
+          <a class="nav-link active" href="#">Home</a>
+          <a class="nav-link" href="#">Catálogo</a>
+          <a class="nav-link" href="#">Bajo Pedido</a>
+          <a class="nav-link" href="#">Contacto</a>
+        </nav>
+        <button class="btn-icon-only" style="display:none;">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#595959" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- HERO -->
+  <div class="section">
+    <div class="section-label">Hero Section</div>
+    <div class="hero-demo">
+      <img class="hero-img" src="https://images.unsplash.com/photo-1600499273056-52b8a9f6859f?w=900&q=60" alt="Interior minimalista Japandi">
+      <div class="hero-overlay"></div>
+      <div class="hero-content">
+        <h1 class="hero-h1">Arquitectura que se vuelve hogar</h1>
+        <p class="hero-sub">Muebles de diseño Japandi fabricados artesanalmente. Cada pieza combina la calidez del roble natural con la fortaleza del hierro negro.</p>
+        <div class="hero-btns">
+          <button class="btn-hero-primary">Explorar catálogo</button>
+          <button class="btn-hero-outline">Pedido personalizado</button>
+        </div>
+        <div style="margin-top: 20px; display: flex; justify-content: center;">
+          <div class="scroll-indicator"><div class="scroll-dot"></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PRODUCT CARD -->
+  <div class="section">
+    <div class="section-label">Product Card</div>
+    <div class="col2">
+      <div class="product-card">
+        <div class="product-image">
+          <img src="https://horizons-cdn.hostinger.com/b2fe2106-c7be-4ab0-8a86-6142f77413cf/06460e9262ef047ede4408bdfc0670e5.png" alt="Escritorio en L">
+          <div class="product-img-overlay"></div>
+        </div>
+        <div class="product-body">
+          <div class="product-category">Escritorios</div>
+          <div class="product-name">Escritorio en L con iluminación integrada</div>
+          <div class="product-desc">Escritorio artesanal en L con estructura de hierro negro mate y superficie de roble natural. Iluminación LED blanca cálida integrada bajo estante superior.</div>
+          <div class="product-specs">
+            <div class="spec-badge"><span class="spec-label">Material</span><span class="badge">Roble natural</span></div>
+            <div class="spec-badge"><span class="spec-label">Estructura</span><span class="badge">Hierro negro</span></div>
+            <div class="spec-badge"><span class="spec-label">LED</span><span class="badge">3000K</span></div>
+          </div>
+        </div>
+        <div class="product-footer">
+          <button class="btn btn-whatsapp" style="width:100%;justify-content:center;">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+            Cotizar esta pieza
+          </button>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <div class="product-image">
+          <img src="https://horizons-cdn.hostinger.com/b2fe2106-c7be-4ab0-8a86-6142f77413cf/970de4debb308527d632054539a26510.png" alt="Biblioteca modular">
+          <div class="product-img-overlay"></div>
+        </div>
+        <div class="product-body">
+          <div class="product-category">Almacenamiento</div>
+          <div class="product-name">Biblioteca modular de roble y hierro</div>
+          <div class="product-desc">Sistema de estantería modular con estructura de hierro negro mate y roble natural de grano visible. LED integrado en múltiples niveles.</div>
+          <div class="product-specs">
+            <div class="spec-badge"><span class="spec-label">Estantes</span><span class="badge">Roble macizo</span></div>
+            <div class="spec-badge"><span class="spec-label">Config.</span><span class="badge">Modular</span></div>
+            <div class="spec-badge"><span class="spec-label">Tamaño</span><span class="badge">240×220cm</span></div>
+          </div>
+        </div>
+        <div class="product-footer">
+          <button class="btn btn-whatsapp" style="width:100%;justify-content:center;">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+            Cotizar esta pieza
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FEATURE ICONS -->
+  <div class="section">
+    <div class="section-label">Feature Icons — "Por qué elegir Arketika"</div>
+    <div class="col3">
+      <div class="feature-block">
+        <div class="feature-icon">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3c-4.97 0-9 3.185-9 7.115 0 2.557 1.522 4.82 3.889 6.21L6 21l4.5-2.25c.492.072.99.115 1.5.115 4.97 0 9-3.185 9-7.115S16.97 3 12 3z"/><path d="M8 12.5l2.5 2.5 5-5"/></svg>
+        </div>
+        <div class="feature-title">Diseño único</div>
+        <div class="feature-body">Cada pieza es diseñada con atención al detalle, combinando estética Japandi con funcionalidad moderna.</div>
+      </div>
+      <div class="feature-block">
+        <div class="feature-icon">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+        </div>
+        <div class="feature-title">Fabricación artesanal</div>
+        <div class="feature-body">Trabajamos con materiales nobles y técnicas tradicionales para garantizar calidad excepcional.</div>
+      </div>
+      <div class="feature-block">
+        <div class="feature-icon">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        </div>
+        <div class="feature-title">Durabilidad atemporal</div>
+        <div class="feature-body">Muebles diseñados para durar generaciones, con acabados resistentes y materiales de primera calidad.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- INPUTS -->
+  <div class="section">
+    <div class="section-label">Form Inputs</div>
+    <div class="col2" style="max-width: 600px;">
+      <div class="input-group">
+        <label class="input-label">Nombre</label>
+        <input class="input" type="text" placeholder="Tu nombre completo">
+      </div>
+      <div class="input-group">
+        <label class="input-label">Teléfono / WhatsApp</label>
+        <input class="input" type="tel" placeholder="+57 300 000 0000">
+        <span class="input-hint">Te contactaremos por WhatsApp</span>
+      </div>
+      <div class="input-group" style="grid-column: 1 / -1;">
+        <label class="input-label">Mensaje</label>
+        <textarea class="input" rows="4" placeholder="Describe tu proyecto o la pieza que tienes en mente..."></textarea>
+      </div>
+    </div>
+  </div>
+
+  <!-- CTA DARK SECTION -->
+  <div class="section">
+    <div class="section-label">CTA — Dark Section</div>
+    <div class="cta-demo">
+      <h2 class="cta-h2">¿Tienes un proyecto en mente?</h2>
+      <p class="cta-p">Creamos piezas personalizadas que se adaptan perfectamente a tu espacio y necesidades.</p>
+      <button class="btn btn-dark" style="background:#FFF8DC;color:#1A1A1A;margin:0 auto;">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+        Iniciar conversación
+      </button>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="section">
+    <div class="section-label">Footer</div>
+    <div class="footer-demo">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-logo">Arketika</div>
+          <div class="footer-tagline">Muebles de diseño Japandi fabricados artesanalmente. Donde la arquitectura se vuelve hogar.</div>
+        </div>
+        <div>
+          <div class="footer-col-label">Contacto</div>
+          <div class="footer-item">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#8B7355" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13.1a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 2.18h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            <span>+57 300 123 4567</span>
+          </div>
+          <div class="footer-item">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#8B7355" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            <span>contacto@arketika.co</span>
+          </div>
+          <div class="footer-item">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#8B7355" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <span>Bogotá, Colombia</span>
+          </div>
+        </div>
+        <div>
+          <div class="footer-col-label">Legal</div>
+          <div style="font-size:12px;color:#595959;margin-bottom:6px;cursor:pointer;">Política de Privacidad</div>
+          <div style="font-size:12px;color:#595959;cursor:pointer;">Términos de Servicio</div>
+        </div>
+      </div>
+      <hr class="footer-divider">
+      <div class="footer-bottom">
+        <span>© 2025 Arketika. Todos los derechos reservados.</span>
+        <span>Diseño y fabricación artesanal en Colombia</span>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

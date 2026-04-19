@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Arketika — Spacing</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Outfit', sans-serif;
+    background: #F0EDE8;
+    padding: 48px 40px;
+    -webkit-font-smoothing: antialiased;
+  }
+  h1.label { font-size: 11px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: #8B7355; margin-bottom: 6px; }
+  h2.title { font-size: 28px; font-weight: 700; color: #1A1A1A; margin-bottom: 40px; letter-spacing: -0.02em; }
+  .section { margin-bottom: 48px; }
+  .section-label { font-size: 10px; font-weight: 600; letter-spacing: 0.10em; text-transform: uppercase; color: #8B7355; margin-bottom: 20px; }
+  hr { border: none; border-top: 1px solid #DEDAD5; margin: 0 0 40px; }
+
+  /* Spacing scale */
+  .space-row { display: flex; align-items: center; gap: 16px; margin-bottom: 14px; }
+  .space-bar { height: 24px; background: #8B7355; border-radius: 4px; opacity: 0.75; flex-shrink: 0; }
+  .space-meta { font-size: 12px; color: #595959; }
+  .space-name { font-weight: 600; color: #1A1A1A; margin-right: 8px; }
+
+  /* Radius */
+  .radius-row { display: flex; gap: 20px; flex-wrap: wrap; margin-bottom: 24px; }
+  .radius-item { text-align: center; }
+  .radius-block {
+    width: 80px; height: 80px; background: #8B7355;
+    border: none; margin: 0 auto 8px; opacity: 0.8;
+  }
+  .radius-label { font-size: 11px; color: #595959; }
+  .radius-name { font-size: 12px; font-weight: 600; color: #1A1A1A; }
+
+  /* Shadows */
+  .shadow-row { display: flex; gap: 24px; flex-wrap: wrap; margin-bottom: 24px; }
+  .shadow-item { text-align: center; }
+  .shadow-block {
+    width: 120px; height: 80px; background: #FFFFFF;
+    border-radius: 12px; margin: 0 auto 12px;
+  }
+  .shadow-label { font-size: 11px; color: #595959; margin-bottom: 2px; }
+  .shadow-name { font-size: 12px; font-weight: 600; color: #1A1A1A; }
+</style>
+</head>
+<body>
+  <h1 class="label">Arketika Design System</h1>
+  <h2 class="title">Spacing, Radius & Shadows</h2>
+
+  <div class="section">
+    <div class="section-label">Spacing Scale</div>
+    <div class="space-row"><div class="space-bar" style="width:4px"></div><div class="space-meta"><span class="space-name">space-1</span>0.25rem · 4px</div></div>
+    <div class="space-row"><div class="space-bar" style="width:8px"></div><div class="space-meta"><span class="space-name">space-2</span>0.5rem · 8px</div></div>
+    <div class="space-row"><div class="space-bar" style="width:12px"></div><div class="space-meta"><span class="space-name">space-3</span>0.75rem · 12px</div></div>
+    <div class="space-row"><div class="space-bar" style="width:16px"></div><div class="space-meta"><span class="space-name">space-4</span>1rem · 16px</div></div>
+    <div class="space-row"><div class="space-bar" style="width:20px"></div><div class="space-meta"><span class="space-name">space-5</span>1.25rem · 20px</div></div>
+    <div class="space-row"><div class="space-bar" style="width:24px"></div><div class="space-meta"><span class="space-name">space-6</span>1.5rem · 24px</div></div>
+    <div class="space-row"><div class="space-bar" style="width:32px"></div><div class="space-meta"><span class="space-name">space-8</span>2rem · 32px · container padding</div></div>
+    <div class="space-row"><div class="space-bar" style="width:40px"></div><div class="space-meta"><span class="space-name">space-10</span>2.5rem · 40px</div></div>
+    <div class="space-row"><div class="space-bar" style="width:48px"></div><div class="space-meta"><span class="space-name">space-12</span>3rem · 48px</div></div>
+    <div class="space-row"><div class="space-bar" style="width:64px"></div><div class="space-meta"><span class="space-name">space-16</span>4rem · 64px</div></div>
+    <div class="space-row"><div class="space-bar" style="width:80px"></div><div class="space-meta"><span class="space-name">space-20</span>5rem · 80px · section py (mobile)</div></div>
+    <div class="space-row"><div class="space-bar" style="width:96px"></div><div class="space-meta"><span class="space-name">space-24</span>6rem · 96px · section py (desktop)</div></div>
+  </div>
+
+  <hr>
+
+  <div class="section">
+    <div class="section-label">Border Radius</div>
+    <div class="radius-row">
+      <div class="radius-item">
+        <div class="radius-block" style="border-radius:8px;"></div>
+        <div class="radius-name">radius-sm</div>
+        <div class="radius-label">8px — buttons sm</div>
+      </div>
+      <div class="radius-item">
+        <div class="radius-block" style="border-radius:10px;"></div>
+        <div class="radius-name">radius-md</div>
+        <div class="radius-label">10px — inputs</div>
+      </div>
+      <div class="radius-item">
+        <div class="radius-block" style="border-radius:12px;"></div>
+        <div class="radius-name">radius-lg</div>
+        <div class="radius-label">12px — default / cards</div>
+      </div>
+      <div class="radius-item">
+        <div class="radius-block" style="border-radius:16px;"></div>
+        <div class="radius-name">radius-xl</div>
+        <div class="radius-label">16px — image containers</div>
+      </div>
+      <div class="radius-item">
+        <div class="radius-block" style="border-radius:24px;"></div>
+        <div class="radius-name">radius-2xl</div>
+        <div class="radius-label">24px — catalogue images</div>
+      </div>
+      <div class="radius-item">
+        <div class="radius-block" style="border-radius:9999px; width:80px; height:80px;"></div>
+        <div class="radius-name">radius-full</div>
+        <div class="radius-label">pill — FAB button</div>
+      </div>
+    </div>
+  </div>
+
+  <hr>
+
+  <div class="section">
+    <div class="section-label">Shadows</div>
+    <div class="shadow-row">
+      <div class="shadow-item">
+        <div class="shadow-block" style="box-shadow: 0 1px 2px 0 rgba(0,0,0,0.05);"></div>
+        <div class="shadow-name">shadow-sm</div>
+        <div class="shadow-label">Cards (default)</div>
+      </div>
+      <div class="shadow-item">
+        <div class="shadow-block" style="box-shadow: 0 4px 6px -1px rgba(0,0,0,0.10), 0 2px 4px -2px rgba(0,0,0,0.10);"></div>
+        <div class="shadow-name">shadow-md</div>
+        <div class="shadow-label">Elevated elements</div>
+      </div>
+      <div class="shadow-item">
+        <div class="shadow-block" style="box-shadow: 0 10px 15px -3px rgba(0,0,0,0.10), 0 4px 6px -4px rgba(0,0,0,0.10);"></div>
+        <div class="shadow-name">shadow-lg</div>
+        <div class="shadow-label">Cards on hover</div>
+      </div>
+      <div class="shadow-item">
+        <div class="shadow-block" style="box-shadow: 0 4px 6px -1px rgba(139,115,85,0.10), 0 2px 4px -1px rgba(139,115,85,0.06);"></div>
+        <div class="shadow-name">shadow-warm</div>
+        <div class="shadow-label">Warm tint — preferred</div>
+      </div>
+      <div class="shadow-item">
+        <div class="shadow-block" style="box-shadow: 0 10px 15px -3px rgba(139,115,85,0.10), 0 4px 6px -2px rgba(139,115,85,0.05);"></div>
+        <div class="shadow-name">shadow-warm-lg</div>
+        <div class="shadow-label">Warm tint elevated</div>
+      </div>
+    </div>
+  </div>
+
+  <hr>
+
+  <div class="section">
+    <div class="section-label">Transitions</div>
+    <div style="display:flex; gap:32px; flex-wrap:wrap;">
+      <div>
+        <div style="font-size:13px; font-weight:600; color:#1A1A1A; margin-bottom:4px;">150ms ease-in-out</div>
+        <div style="font-size:12px; color:#595959;">Fast — instant feedback</div>
+      </div>
+      <div>
+        <div style="font-size:13px; font-weight:600; color:#1A1A1A; margin-bottom:4px;">200ms ease-in-out</div>
+        <div style="font-size:12px; color:#595959;">Base — buttons, links, colors</div>
+      </div>
+      <div>
+        <div style="font-size:13px; font-weight:600; color:#1A1A1A; margin-bottom:4px;">300ms ease-in-out</div>
+        <div style="font-size:12px; color:#595959;">Smooth — overlays, shadows</div>
+      </div>
+      <div>
+        <div style="font-size:13px; font-weight:600; color:#1A1A1A; margin-bottom:4px;">500ms ease-in-out</div>
+        <div style="font-size:12px; color:#595959;">Slow — image zoom on hover</div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
